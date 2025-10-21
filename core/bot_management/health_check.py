@@ -1,6 +1,6 @@
 import asyncio
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import timezone, datetime
 import logging
 
 import psutil
@@ -153,7 +153,7 @@ class HealthCheck:
             thread_count = self.process.num_threads()
 
             metrics = ResourceMetrics(
-                timestamp=datetime.now(tz=UTC),
+                timestamp=datetime.now(tz=timezome.utc),
                 cpu_percent=cpu_percent,
                 memory_percent=virtual_memory.percent,
                 disk_percent=disk.percent,

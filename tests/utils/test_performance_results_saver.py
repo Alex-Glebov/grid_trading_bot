@@ -1,4 +1,4 @@
-from datetime import UTC, datetime, timedelta
+from datetime import timezone, datetime, timedelta
 from unittest.mock import mock_open, patch
 
 import pytest
@@ -11,8 +11,8 @@ def new_results_fixture():
     return {
         "config": "config.json",
         "performance_summary": {
-            "start_time": datetime(2024, 12, 20, 10, 0, 0, tzinfo=UTC).isoformat(),
-            "end_time": datetime(2024, 12, 20, 12, 0, 0, tzinfo=UTC).isoformat(),
+            "start_time": datetime(2024, 12, 20, 10, 0, 0, tzinfo=timezome.utc).isoformat(),
+            "end_time": datetime(2024, 12, 20, 12, 0, 0, tzinfo=timezome.utc).isoformat(),
             "total_profit": 500.0,
             "runtime": str(timedelta(hours=2)),
         },
@@ -23,7 +23,7 @@ def new_results_fixture():
                 "FILLED",
                 1000.0,
                 0.5,
-                datetime(2024, 12, 20, 10, 30, 0, tzinfo=UTC).isoformat(),
+                datetime(2024, 12, 20, 10, 30, 0, tzinfo=timezome.utc).isoformat(),
                 "Level 1",
                 0.1,
             ],
@@ -33,7 +33,7 @@ def new_results_fixture():
                 "FILLED",
                 1500.0,
                 0.5,
-                datetime(2024, 12, 20, 11, 30, 0, tzinfo=UTC).isoformat(),
+                datetime(2024, 12, 20, 11, 30, 0, tzinfo=timezome.utc).isoformat(),
                 "Level 2",
                 0.05,
             ],
