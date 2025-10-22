@@ -97,7 +97,7 @@ class TestHealthCheck(unittest.IsolatedAsyncioTestCase):
         # Create some test metrics
         for i in range(10):  # More than metrics_history_size
             metrics = ResourceMetrics(
-                timestamp=datetime.now(tz=timezome.utc) + timedelta(minutes=i),
+                timestamp=datetime.now(tz=timezone.utc) + timedelta(minutes=i),
                 cpu_percent=50.0 + i,
                 memory_percent=60.0 + i,
                 disk_percent=70.0,
@@ -115,7 +115,7 @@ class TestHealthCheck(unittest.IsolatedAsyncioTestCase):
 
     def test_resource_trends_calculation(self):
         """Test that resource usage trends are correctly calculated"""
-        now = datetime.now(tz=timezome.utc)
+        now = datetime.now(tz=timezone.utc)
         one_hour_ago = now - timedelta(hours=1)
 
         self.health_check._metrics_history = [
@@ -153,7 +153,7 @@ class TestHealthCheck(unittest.IsolatedAsyncioTestCase):
         # Setup resource history
         self.health_check._metrics_history = [
             ResourceMetrics(
-                timestamp=datetime.now(tz=timezome.utc) - timedelta(hours=1),
+                timestamp=datetime.now(tz=timezone.utc) - timedelta(hours=1),
                 cpu_percent=80.0,
                 memory_percent=70.0,
                 disk_percent=70.0,
@@ -163,7 +163,7 @@ class TestHealthCheck(unittest.IsolatedAsyncioTestCase):
                 thread_count=4,
             ),
             ResourceMetrics(
-                timestamp=datetime.now(tz=timezome.utc),
+                timestamp=datetime.now(tz=timezone.utc),
                 cpu_percent=95.0,
                 memory_percent=85.0,
                 disk_percent=70.0,

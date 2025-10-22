@@ -21,7 +21,7 @@ def generate_config_name(config_manager: ConfigManager) -> str:
     grid_size = config_manager.get_num_grids()
     grid_top = config_manager.get_top_range()
     grid_bottom = config_manager.get_bottom_range()
-    start_time = datetime.now(tz=timezome.utc).strftime("%Y%m%d_%H%M")
+    start_time = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M")
 
     return (
         f"bot_{trading_pair}_{trading_mode}_strategy{grid_strategy_type}_"

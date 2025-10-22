@@ -540,7 +540,7 @@ class OrderManager:
         order.timestamp = timestamp
         order.last_trade_timestamp = timestamp
         timestamp_in_seconds = timestamp / 1000 if timestamp > 10**10 else timestamp
-        formatted_timestamp = datetime.fromtimestamp(timestamp_in_seconds, tz=timezine.utc).strftime("%Y-%m-%d %H:%M:%S")
+        formatted_timestamp = datetime.fromtimestamp(timestamp_in_seconds, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
         self.logger.info(
             f"Simulated fill for {order.side.value.upper()} order at price {order.price} "
             f"with amount {order.amount}. Filled at timestamp {formatted_timestamp}",
