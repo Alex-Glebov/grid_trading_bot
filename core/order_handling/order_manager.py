@@ -538,8 +538,8 @@ class OrderManager:
         order.remaining = 0.0
         order.status = OrderStatus.CLOSED
         order.timestamp = timestamp
-        order.last_trade_timestamp = timestamp
         timestamp_in_seconds = timestamp / 1000 if timestamp > 10**10 else timestamp
+        order.last_trade_timestamp = timestamp_in_seconds
         formatted_timestamp = datetime.fromtimestamp(timestamp_in_seconds, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
         self.logger.info(
             f"Simulated fill for {order.side.value.upper()} order at price {order.price} "

@@ -248,7 +248,7 @@ class GridTradingStrategy(TradingStrategyInterface):
             self.logger.debug("No previous price recorded yet. Waiting for the next price update.")
             return False
 
-        if last_price <= trigger_price <= current_price or last_price == trigger_price:
+        if last_price < trigger_price <= current_price : #or last_price == trigger_price:
             self.logger.info(
                 f"Current price {current_price} reached trigger price {trigger_price}. Will perform initial purhcase",
             )

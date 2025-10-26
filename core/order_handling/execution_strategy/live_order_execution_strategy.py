@@ -29,6 +29,8 @@ class LiveOrderExecutionStrategy(OrderExecutionStrategyInterface):
         pair: str,
         quantity: float,
         price: float,
+        last_trade_timestamp:int | None = None
+
     ) -> Order | None:
         for attempt in range(self.max_retries):
             try:

@@ -11,6 +11,7 @@ class BacktestOrderExecutionStrategy(OrderExecutionStrategyInterface):
         pair: str,
         quantity: float,
         price: float,
+        last_trade_timestamp:int | None = 1
     ) -> Order | None:
         order_id = f"backtest-{int(time.time())}"
         timestamp = int(time.time() * 1000)
@@ -26,7 +27,7 @@ class BacktestOrderExecutionStrategy(OrderExecutionStrategyInterface):
             remaining=0,
             timestamp=timestamp,
             datetime="111",
-            last_trade_timestamp=1,
+            last_trade_timestamp=last_trade_timestamp,
             symbol=pair,
             time_in_force="GTC",
         )
